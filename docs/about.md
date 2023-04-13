@@ -1,0 +1,8 @@
+# About
+Battlefront II VR (BF2VR) is a project by developer, musician, and Star Wars enthusiast [Ethan Porcaro](https://ethanporcaro.com/). He has played Battlefront II for a while, and after being inspired by [praydog](https://github.com/praydog)'s upcoming Unreal Engine VR Injector, decided to see what would be possible to mod in the Frostbite Engine.
+
+BF2VR started with code from [OpenGameCamera](https://github.com/coltonon/OpenGameCamera) to position the Battlefront Camera to the transformation matrix from the OpenVR API. The game's DirectX calls were intercepted to get access to the framebuffer, which was then sent to the VR screen. Stereoscopy was provided using Alternate Eye Rendering, a technique in which the rendered eye alternates every frame while the game camera shifts left and right to give a sense of depth. The games "Soldier" was also hooked to aim where the player looked.
+
+New updates led the mod to be ported to [OpenXR](https://www.khronos.org/openxr/), a standard for XR runtime interaction. This improves performance and compatibility. Motion controlls were added, allowing the player to aim with a controller rather that the headset.
+
+BF2VR is in early alpha, with frequent updates but limited features. Releases to the mod can be found at Ethan's [Discord Server](https://discord.gg/mrKYwzd3N4). Keep in mind that the mod is unstable, and you won't get all the features a VR mod should include just yet.
