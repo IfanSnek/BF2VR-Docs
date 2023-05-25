@@ -1,4 +1,7 @@
-﻿# Setup
+﻿---
+layout: default
+---
+# Setup
 
 This guide will show you how to get BF2VR up and running. A video guide can be found [here](https://youtu.be/KxQb4e2cLDc).
 
@@ -70,35 +73,48 @@ If you experience crosseye or eye alignment issues, continue to the next section
 
 ## Fixing crosseye issues
 
-Open the now playing panel for SteamVR from in the headset. 
-Click application-specific video settings.
-Chose Battlefront.
+Once the mod is running, you will find a file called `config.ini` in the Battlefront folder.
 
-This is often hit-or-miss, and may require multiple attempts.
-Once you are able to see the settings, adjust the FOV slider until the VR eyes align.
-Do not worry about being extremely zoomed in, this will be fixed in a later step.
-Just make sure the alignment is correct.
-Once it is, close Battlefront completely. You may leave SteamVR open.
+There are three values you can change, each for a different potential issue. By default, the configuration will have nothing in it. If you want to override some values, start by pasting this into the file:
 
-Open the installation folder of Battlefront in File Explorer.
-Open the file named `config.ini` with notepad.
-Add the line `ManualFOV = 1;` with **proper indentation.**
-Save the file and Open Battlefront one final time.
+```
+[ Core ]
+```
 
-Launch the mod again.
-Navigate to the video settings. 
-Remember to use your controllers, the grip buttons are LB and RB.
-Adjust the FOV slider to correct the extreme zoom in.
-Once you are happy, remeber the value the slider is set to.
+You can then continue to any or all of the following sections.
 
-Open `config.ini` again and remove the line you added.
-Change the `FOVOverride` value to the number from the FOV slider in the game settings.
-Save the file.
+### Distortion when tilting head left or right
+The aspect ratio of the game camera has an important impact on how the image is projected to the VR screens.
 
-Return to Battlefront and press the `HOME` key.
-This should apply the FOV change.
-If forever reason it does not, you may have to restart the mod and/or game.
-The mod can be restarted by pressing the `END` key and lauching like normal again.
+The mod tries to find the best value supplied to it by OpenXR, but in some cases (like Virtual Desktop), the values are incorrect.
 
-You may still notice some distortion, this is due to the FOV slider in-game only displaying whole numbers.
-You can fix this by changing the value in `config.ini` in small increments and pressing the HOME key to apply the changes.
+You can change this value by pasting the following on a new line in the configuration (including the indentation):
+
+```
+	EyeAspectRatio = 0.89;
+```
+
+You can change the `0.89` to whatever value works for you. You can find some valuable info about your headset in the [HMD Geometry Database](https://risa2000.github.io/hmdgdb/).
+
+### Zoomed in or zoomed out (FOV)
+The FOV of the game must match perfectly with the VR to prevent motion sickness.
+
+Like the aspect ratio setting in the above section, it is set to the reccomeded values but you can
+adjust it if it doesn't work for you.
+
+The format for this parameter is like this:
+
+```
+	FOVOverride = 89;
+```
+
+### Crosseye or misaligned vision
+This one was a mystery for a while. To have good stereo convergence, the eyes have to be aligned properly. The mod now does a best guess, but here is how to set it yourself.
+
+Keep in mind that zero may be a good value, not just higher numbers. For example, Virtual Desktop on the Quest 2 does some correction already, and you won't need any adjustment of the eye convergence.
+
+This value defaults to around 200 on the Quest 2, as a reference. Keep in mind this is in pixels.
+
+```
+	EyeConvergenceOverride = 0;
+```
