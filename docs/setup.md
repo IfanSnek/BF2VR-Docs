@@ -41,11 +41,7 @@ Once you do so, the mod will install.
 
 ## First time setup
 
-Now, open SteamVR and wait for the default area to load.
-Right now, only SteamVR works as the OpenXR runtime, due to a bug in the Oculus one that prevents input from passing to the game.
-To check you have the right runtime, click the hamburger menu on the SteamVR status window and click settings.
-From there, you need to enable advanced settings and go to the developer tab.
-If the active OpenXR runtime is not SteamVR, click the button to switch it.
+Now, open SteamVR or Oculus and wait for the default area to load.
 
 Next, you can launch Battlefront. Remeber, pirated copies don't work.
 Go to the settings menu and make sure these settings are applied:
